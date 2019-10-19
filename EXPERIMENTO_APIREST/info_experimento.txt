@@ -1,0 +1,137 @@
+SELECT COUNT(*) AS CONTADOR, Students_query.id_number , FK_challenge_id_number, query FROM `Students_query` WHERE FK_challenge_id_number=1 GROUP BY query ORDER BY `CONTADOR` DESC LIMIT 5; -- vih
+CONTADOR id_number	FK_challenge_id_number	query 	
+49 			11 				1 				vih en chile
+23 			37 				1 				personas con VIH en chile
+19 			13 				1 				vih
+10 			26 				1 				cantidad de personas con VIH en Chile
+8 			63 				1 				cuantas personas en chile tiene sida
+
+
+SELECT COUNT(*) AS CONTADOR, Students_query.id_number , FK_challenge_id_number, query FROM `Students_query` WHERE FK_challenge_id_number=3 GROUP BY query ORDER BY `CONTADOR` DESC LIMIT 5 ; -- crimen en chile
+
+CONTADOR id_number	FK_challenge_id_number	query 	
+11 			601 			3 				crimen en chile
+9 			670 			3 				como reducir el crimen en chile
+9 			497 			3 				como reducir el crimen
+6 			663 			3 				reducir el crimen en chile
+4 			1208 			3 				crimen en chile actualidad
+
+SELECT COUNT(*) AS CONTADOR, Students_query.id_number , FK_challenge_id_number, query FROM `Students_query` WHERE FK_challenge_id_number=4 GROUP BY query ORDER BY `CONTADOR` DESC LIMIT 5 ; -- construir un vehiculo
+
+CONTADOR id_number	FK_challenge_id_number	query 	
+34 			82 				4 				como construir un automovil
+20 			474 			4 				como hacer un auto
+13 			227 			4 				como construir un automovil de carreras
+10 			286 			4 				construir un automóvil
+10 			519 			4 				soapbox vehiculo
+
+SELECT COUNT(*) AS CONTADOR, Students_query.id_number , FK_challenge_id_number, query FROM `Students_query` WHERE FK_challenge_id_number=5 GROUP BY query ORDER BY `CONTADOR` DESC LIMIT 5  ; -- profundidad de mar
+
+CONTADOR id_number	FK_challenge_id_number	query 	
+12 			137 			5 				nombre del punto mas profundo del oceano
+9 			164 			5 				punto mas profundo del oceano
+9 			144 			5 				FOSA DE LAS MARIANAS
+8 			207 			5 				cuanta profundidad tiene el mar
+8 			951 			5 				abismo de challenge profundidad
+
+-- datos ---------------
+---- VIH
+SELECT * FROM (
+    (SELECT title, snippet, url, 1 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=11 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 1 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=37 LIMIT 10)
+	UNION ALL
+    (SELECT title, snippet, url, 1 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=13 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 1 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=26 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 1 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=63 LIMIT 10)
+) AS VIH
+
+
+
+---- CRIMEN EN CHILE
+
+SELECT * FROM (
+    (SELECT title, snippet, url, 2 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=601 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 2 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=670 LIMIT 10)
+	UNION ALL
+    (SELECT title, snippet, url, 2 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=497 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 2 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=663 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 2 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=1208 LIMIT 10)
+) AS CRIMEN
+
+----- construir un vehiculo
+
+SELECT * FROM (
+    (SELECT title, snippet, url, 3 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=82 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 3 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=474 LIMIT 10)
+	UNION ALL
+    (SELECT title, snippet, url, 3 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=227 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 3 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=286 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 3 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=519 LIMIT 10)
+) AS VEHICULO
+
+----- cpunto mas profundo del mar
+
+SELECT * FROM (
+    (SELECT title, snippet, url, 4 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=137 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 4 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=164 LIMIT 10)
+	UNION ALL
+    (SELECT title, snippet, url, 4 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=144 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 4 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=207 LIMIT 10)
+    UNION ALL
+    (SELECT title, snippet, url, 4 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=951 LIMIT 10)
+) AS PROFUNDIDAD_MAR
+
+-- ----- - - -- - - - 
+
+SELECT * FROM (
+    (SELECT title, snippet, url, 1 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=11 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 1 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=37 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 1 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=13 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 1 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=26 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 1 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=63 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 2 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=601 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 2 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=670 LIMIT 10)
+	UNION 
+    (SELECT title, snippet, url, 2 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=497 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 2 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=663 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 2 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=1208 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 3 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=82 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 3 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=474 LIMIT 10)
+	UNION 
+    (SELECT title, snippet, url, 3 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=227 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 3 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=286 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 3 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=519 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 4 , "A" FROM `Students_queries_results` WHERE FK_student_query_id_number=137 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 4 , "B" FROM `Students_queries_results` WHERE FK_student_query_id_number=164 LIMIT 10)
+	UNION 
+    (SELECT title, snippet, url, 4 , "C" FROM `Students_queries_results` WHERE FK_student_query_id_number=144 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 4 , "D" FROM `Students_queries_results` WHERE FK_student_query_id_number=207 LIMIT 10)
+    UNION 
+    (SELECT title, snippet, url, 4 , "E" FROM `Students_queries_results` WHERE FK_student_query_id_number=951 LIMIT 10)
+) AS VIH
