@@ -1,0 +1,36 @@
+
+<div class="container">
+    <div class="dellate " *ngIf="boolean_desafio">
+        <div class="row">
+            <h1>
+                {{data_desafio.detalle.titulo}}
+            </h1><br>
+        </div>
+        <div class="row">
+        <p [innerHTML]="data_desafio.detalle.descripcion" ></p>
+        </div>
+        <div class="row">
+                <h5>Objetivo: {{data_desafio.detalle.objetivo}}</h5>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-body" style="background-color: azure">
+                <h5>Instrucciones</h5>
+                <p>En esta actividad debes recomendar los sitios útiles para resolver el desafío planteado, y guardar aquellos que efectivamente utilizarías en la resolución.</p>
+                
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+
+        <button (click)="go_to_pretest()"type="button" class="btn btn-primary center">Iniciar Desafío</button>
+               
+        </div>
+    </div>
+    
+
+</div>  
+<app-pretest (respuesta_pretest)="procesar_pretest($event)" [pretestdata]="data_desafio.pretest" *ngIf="boolean_pretest"></app-pretest>
+
+<app-test (fin_desafio_)="fin_desafio()" (evento_test)="procesar_evento_test_resultados($event)" (evento_test_sin_modal)="procesar_evento_test_sin_modal($event)" [set_datatest]="data_desafio.test" [detalledesafio]="data_desafio.detalle"  *ngIf="boolean_resultados"></app-test>
+<app-posttest (respuesta_posttest)="procesar_posttest($event)" [posttest]="data_desafio.posttest" *ngIf="boolean_posttest"></app-posttest>

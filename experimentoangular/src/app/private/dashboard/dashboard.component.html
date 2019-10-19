@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row p-0" id="gradient-header">
+        <div class="col-11 text-center mx-auto p-5">
+            <div class="f-prime large thirds">
+                
+                <span>Bienvenido a Gonsa-Test</span><button style="float: right" class="btn btn-danger btn-sm" (click)="salir()">Cerrar sesión</button>
+            </div>
+            <div class="f-second text-light">
+        Elige uno de los siguientes desafíos
+                
+            </div>
+            
+        </div>
+     
+            
+
+    </div>
+    <div class="row bg-dark p-0">
+        <div class="col-12 mx-auto p-0">
+            <div class="row mx-auto p-2">
+                <!-- aqui-->
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mx-auto p-2 card" *ngFor="let desafio of desafios">
+                <div class="thumbnail">
+                    <div *ngIf="desafio.estado === 'finalizado'">
+                        <img style="-webkit-filter: grayscale(100%); filter: grayscale(100%);" [src]='desafio.imagen'>
+                    </div>
+                    <div *ngIf="desafio.estado !== 'finalizado'">
+                            <img [src]='desafio.imagen'>
+                    </div>
+                   
+                    <div class="caption">
+                        <div class="f-prime sml primes">
+                            {{desafio.titulo}}
+                        </div>
+                        <div class="f-third text-light">
+                            {{desafio.objetivos}}
+                        </div>
+                        <hr>
+                        <p>
+                            {{desafio.descripcion}}
+                        </p>
+                        <div class="mb-0">
+                                <div *ngIf="desafio.estado === 'finalizado'">
+                                        <button type="button" class="btn btn-secondary btn-lg" disabled>Desafío Finalizado</button>
+                                </div>
+                                <div *ngIf="desafio.estado !== 'finalizado'">
+                                        <a href="#" onclick="return false;" class="btn btn-card" (click)="entrar_a_desafio(desafio.id,desafio.titulo )">Entrar</a>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--
+<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mx-auto p-2 card">
+    <div class="thumbnail">
+        <img src="https://cdn.pixabay.com/photo/2016/01/23/23/52/dining-room-1158266_960_720.jpg">
+        <div class="caption">
+            <div class="f-prime sml primes">
+                Lorem ipsum.
+            </div>
+            <div class="f-third text-light">
+                Lorem ipsum dolor sit amet.
+            </div>
+            <hr>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Augue neque gravida in fermentum et sollicitudin ac. Cursus sit amet dictum sit amet justo donec enim diam.
+            </p>
+            <div class="mb-0">
+                <a href="#link" class="btn btn-card">View More</a>
+            </div>
+        </div>
+    </div>
+</div>
+-->

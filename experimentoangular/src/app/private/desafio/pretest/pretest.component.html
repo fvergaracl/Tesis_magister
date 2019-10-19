@@ -1,0 +1,51 @@
+<div class="container">
+
+
+
+    <h1 class="row justify-content-center">Pretest</h1>
+    <ng-container *ngFor="let pregunta of pretestdata">
+   
+    
+    <div class="row justify-content-center">
+                <div class="pregunta_text" [innerHTML]="pregunta.text"></div><br>
+    </div>
+
+    <div class="row justify-content-center">
+        <ng-container *ngIf="pregunta.tipopregunta == 'choice'"> 
+            <table class="striped-columns border">
+                <thead>
+                    <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td><input type="radio" value="1" name="id_{{pregunta.id}}"/></td>
+                        <td><input type="radio" value="2" name="id_{{pregunta.id}}"/></td>
+                        <td><input type="radio" value="3" name="id_{{pregunta.id}}"/></td>
+                        <td><input type="radio" value="4" name="id_{{pregunta.id}}"/></td>
+                        <td><input type="radio" value="5" name="id_{{pregunta.id}}"/></td>
+                    </tr>
+                    
+                </tbody>
+            </table>     
+        </ng-container>
+        <ng-container *ngIf="pregunta.tipopregunta == 'text'"> 
+                <div class="col-12">
+                        <textarea id="id_{{pregunta.id}}"type="text" style="height: 350px;"  class="form-control"></textarea>   
+                      </div>
+        </ng-container>
+        
+    </div>
+    <hr>
+  </ng-container>
+  <div class="row justify-content-center"><button (click)="checkpregunta()"type="button" class="btn btn-primary center">Enviar respuesta</button></div>
+  
+</div>
+
+

@@ -1,0 +1,39 @@
+<div class="bodylogin">
+    <div id="login">
+        <h3 class="text-center text-white pt-5">GoNSa-Test</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form">
+                            <h3 class="text-center text-info">Entrar</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Usuario:</label><br>
+                                <input type="text" name="username" #userusername class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Contraseña:</label><br>
+                                <input type="password" name="password" #userpassword  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                
+                            </div>
+                            
+                                
+         
+                        </form>
+                        <input type="submit" style="float: right;" name="submit" class="btn btn-info btn-md" value="Entrar" (click)="entrar_sistema(userusername.value, userpassword.value)">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="login-row text-center ">
+                <br>
+                   <span style="font-size: 12px;">Ver<a style="color:blue" (click)="gotermino()"> términos y condiciones</a> </span> 
+            </div>
+        </div>
+        
+        
+    </div>
+   
+</div>

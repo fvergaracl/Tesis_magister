@@ -1,0 +1,153 @@
+
+
+      
+<div class="container">
+    
+    <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+
+                    <div class="text-center" joyrideStep="titulo_desafio"  text="Título de desafío" stepPosition="bottom" >
+                            <h1 >{{detalledesafio.titulo}} </h1>
+                            <p joyrideStep="detalle_desafio_" title="Desafío" text="Aquí podrás ver los detalles del desafío:Descripción y Objetivos" stepPosition="bottom" >
+                                    <button (click)="click_en_ver_desafio()" type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+                                            [attr.aria-expanded]="isCollapsed" aria-controls="collapseExample">
+                                      Ver desafío
+                                    </button>
+                                  </p>
+                           </div>
+                
+                    
+                
+                  </div>
+            
+                  
+    </div>
+    <div class="row  d-flex justify-content-center">
+    <div id="collapseExample" [ngbCollapse]="isCollapsed">
+        
+            <div class="card">
+                <div class="card-body">
+                    
+                        
+    <p>{{detalledesafio.descripcion}}</p>
+    <h5>Objetivos: {{detalledesafio.objetivo}}</h5>
+                </div>
+            </div>
+            </div>
+    </div>
+    <br>
+    <div *ngIf="toursnippet"  class="row">
+            <div class="col-md-10" joyrideStep="detalle_recurso" title="Resultado" text="En esta sección se muestra el titulo, link y breve descripción del resultado" stepPosition="bottom" >
+                <div class="search-result">
+                    <h3><a href="#" onclick="return false;" >Lorem Ipsum - All the facts </a>
+                        <div style="font-size: 50%;" joyrideStep="veces_recomendado" title="Recomendaciones" text="Podrás ver las veces que otros usuarios han recomendado este resultado" stepPosition="bottom"> 
+                            <progress max="100" value="80">
+                                #document-fragment
+                                    <div pseudo= "-webkit-progress-inner-element">
+                                        <div pseudo= "-webkit-progress-bar">
+                                            <div pseudo= "-webkit-progress-value" style="width: 80%;"></div>
+                                        </div>
+                                    </div>
+                            </progress>
+                    </div></h3>
+                    <a href="#" onclick="return false;" class="search-link">https://loremipsum.io/</a>
+                    <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            
+                    </p>
+                </div>
+        
+            </div>
+            <div class="col-md-2" (done)="click_termino_tour()" joyrideStep="recurso_acciones" title="Acciones" [stepContent]="accionesid" stepPosition="bottom" >
+                <ng-template #accionesid>
+                        Se permiten 3 tipos de acciones sobre cada resultado.<br> <strong>Ver</strong>: Ingresar a página web <br> <strong>Guardar</strong> : Guardar recurso para revisarlo en el futuro <br> <strong>Recomendar</strong>  : Muestra las veces que el resultado fue recomendado, y permite recomendar el resultado a otros usuarios
+                </ng-template>
+                    
+                <div class="col-md-12">
+                    <button type="button"  class="btn btn-primary btn-sm" aria-label="Left Align">
+                        <span class="fa fa-eye"  aria-hidden="true"> Ver</span>
+                    </button>
+                    <p></p>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-sm" aria-label="Left Align">
+                        <span class="fa fa-save" aria-hidden="true"> Guardar</span>
+                    </button>
+                    <p></p>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary btn-sm" aria-label="Left Align">
+                        
+                            <span class="fa fa-star"> 3 <span aria-hidden="true"> Recomendar</span></span>
+                    </button>
+                    <p></p>
+                </div>
+        
+            </div>
+            <div class="col-md-12">
+                <div class="hr-line-dashed"></div>
+            </div>
+        </div>
+
+    <ng-container  *ngFor="let busqueda of datatest | paginate: { itemsPerPage: 10, currentPage: p} ">
+            <div class="row">
+                    <div class="col-md-10">
+                        <div class="search-result">
+                            <h3><a href="#" onclick="return false;" (click)="evento_SERP_VER('titulo',busqueda.id_resultado,busqueda.url_interna)">{{busqueda.titulo}}</a>
+                              
+                                <div style="font-size: 50%; color: black">
+                                    Popularidad: 
+                                    <progress max="{{detalledesafio.maximo_popularidad}}" value="{{busqueda.popularidad}}">
+                                        #document-fragment
+                                            <div pseudo= "-webkit-progress-inner-element">
+                                                <div pseudo= "-webkit-progress-bar">
+                                                    <div pseudo= "-webkit-progress-value" style="width: 100%;"></div>
+                                                </div>
+                                            </div>
+                                    </progress>
+                                   
+                                    </div></h3> 
+                            <a href="#" onclick="return false;" (click)="evento_SERP_VER('url',busqueda.id_resultado,busqueda.url_interna)" class="search-link">{{busqueda.url}}</a>
+                            <p (click)="evento_SERP('snippet',busqueda.id_resultado)">
+                                    {{busqueda.snippet}}
+                                    
+                            </p>
+                        </div>
+                
+                    </div>
+                    <div class="col-md-2">
+                        <div class="col-md-12">
+                            <button type="button" (click)="evento_SERP_VER('boton_ver',busqueda.id_resultado,busqueda.url_interna)" class="btn btn-primary btn-sm" aria-label="Left Align">
+                                <span class="fa fa-eye" aria-hidden="true"> Ver</span>
+                            </button>
+                            <p></p>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button" (click)="evento_SERP('boton_guardar',busqueda.id_resultado)" class="btn btn-primary btn-sm" id="guardar_{{busqueda.id_resultado}}"  aria-label="Left Align">
+                                <span class="fa fa-save" id="guardar_texto_{{busqueda.id_resultado}}"  aria-hidden="true"> Guardar</span>
+                            </button>
+                            <p></p>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button" (click)="evento_SERP('boton_recomendar',busqueda.id_resultado)" class="btn btn-primary btn-sm" id="recomendar_{{busqueda.id_resultado}}"  aria-label="Left Align">
+                                
+                                    <span class="fa fa-star" id="c_recomendado_{{busqueda.id_resultado}}"> {{busqueda.popularidad}}<span id="recomendar_texto_{{busqueda.id_resultado}}" aria-hidden="true"> Recomendar</span></span>
+                            </button>
+                            <p></p>
+                        </div>
+                
+                    </div>
+                    <div class="col-md-12">
+                        <div class="hr-line-dashed"></div>
+                    </div>
+                </div>
+    </ng-container>
+    <div class="row d-flex justify-content-center"><pagination-controls previousLabel="" nextLabel="" (pageChange)="cambiapag($event)"></pagination-controls></div>
+    
+    <br><br>
+    <div class="row d-flex justify-content-center">
+        <button (click)="finalizardesafio()" type="button" class="btn btn-info btn-lg">Finalizar desafío</button>
+    </div>
+    <br><br><br><br>
+</div>
+

@@ -1,0 +1,18 @@
+table.striped-columns tbody td:nth-of-type(even),
+table.striped-columns th:nth-of-type(even){
+	background: rgb(235, 227, 209);
+}
+
+table.border {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table.border td,
+table.border th {
+    border: 1px solid grey;
+    padding: 3px;
+}
+
+p {
+    margin-bottom: 0rem;
+}
